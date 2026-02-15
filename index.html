@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHÚC MỪNG NĂM MỚI BÍNH NGỌ 2026 🐎</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --red: #C8102E;
+            --gold: #FFD700;
+            --orange: #FF8C00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #8B0000 0%, #C8102E 30%, #FF4500 70%, #FFD700 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        #petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 28px;
+            color: #FFD700;
+            text-shadow: 0 0 15px #fff, 0 0 25px #FFD700;
+            user-select: none;
+            animation: fall linear forwards;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(25vh) translateX(40px) rotate(120deg);
+            }
+            50% {
+                transform: translateY(50vh) translateX(-30px) rotate(240deg);
+            }
+            75% {
+                transform: translateY(75vh) translateX(50px) rotate(340deg);
+            }
+            100% {
+                transform: translateY(110vh) translateX(0) rotate(480deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8),
+                         0 0 80px rgba(255, 140, 0, 0.6);
+            animation: titleShine 4s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes titleShine {
+            0% { background-position: 0%; }
+            50% { background-position: 200%; }
+            100% { background-position: 0%; }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            letter-spacing: 6px;
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                        inset 0 0 40px rgba(255, 215, 0, 0.2);
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            width: 110px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            transition: all 0.3s;
+        }
+
+        .time-box:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+        }
+
+        .time-box .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 0 0 20px #fff;
+            line-height: 1;
+        }
+
+        .time-box .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .image-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .wish-section {
+            text-align: center;
+        }
+
+        .wish-btn {
+            background: linear-gradient(45deg, var(--red), var(--gold));
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.5);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .wish-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7);
+        }
+
+        .wish-text {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            min-height: 120px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border-left: 6px solid var(--gold);
+            display: none;
+        }
+
+        .wish-text.show {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .lantern {
+            position: absolute;
+            font-size: 60px;
+            animation: lanternSwing 6s ease-in-out infinite;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        @keyframes lanternSwing {
+            0%, 100% { transform: rotate(-12deg); }
+            50% { transform: rotate(12deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas pháo hoa -->
+    <canvas id="fireworks"></canvas>
+
+    <!-- Hoa mai rơi -->
+    <div id="petals"></div>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <!-- Tiêu đề -->
+        <header>
+            <div class="lantern" style="top: 80px; left: 8%;">🏮</div>
+            <div class="lantern" style="top: 120px; right: 10%; animation-delay: 2s;">🏮</div>
+            
+            <h1 class="title">CHÚC MỪNG NĂM MỚI</h1>
+            <h2 class="subtitle">BÍNH NGỌ 2026 🐎</h2>
+            <p style="margin-top: 15px; font-size: 1.3rem; opacity: 0.9;">Ngàn năm phú quý - Vạn sự an khang</p>
+        </header>
+
+        <!-- Đồng hồ đếm ngược -->
+        <div class="glass">
+            <h2 style="text-align: center; margin-bottom: 25px; font-size: 2rem; color: var(--gold);">⏳ ĐẾM NGƯỢC ĐẾN GIAO THỪA</h2>
+            <div class="countdown" id="countdown">
+                <div class="time-box">
+                    <div class="number" id="days">00</div>
+                    <div class="label">Ngày</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="hours">00</div>
+                    <div class="label">Giờ</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="minutes">00</div>
+                    <div class="label">Phút</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="seconds">00</div>
+                    <div class="label">Giây</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="glass">
+            <h2 style="text-align: center; margin-bottom: 25px; font-size: 2rem; color: var(--gold);">🌟 HÌNH ẢNH TẾT BÍNH NGỌ</h2>
+            <div class="images">
+                <!-- Ngựa vàng -->
+                <div class="image-card">
+                    <img src="https://picsum.photos/id/1015/800/520" alt="Ngựa vàng Bính Ngọ">
+                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Ngựa Vàng - Bính Ngọ 2026</div>
+                </div>
+                <!-- Câu đối đỏ -->
+                <div class="image-card">
+                    <img src="https://picsum.photos/id/133/800/520" alt="Câu đối Tết">
+                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Câu Đối Đỏ - Lời Chúc May Mắn</div>
+                </div>
+                <!-- Lồng đèn -->
+                <div class="image-card">
+                    <img src="https://picsum.photos/id/201/800/520" alt="Lồng đèn Tết">
+                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Lồng Đèn Lung Linh - Đón Xuân Sang</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lời chúc -->
+        <div class="glass wish-section">
+            <h2 style="margin-bottom: 20px; color: var(--gold);">🎁 NHẬN LỘC ĐẦU XUÂN</h2>
+            <button class="wish-btn" onclick="getRandomWish()">Nhận Lời Chúc May Mắn ✨</button>
+            
+            <div class="wish-text" id="wishText">
+                Nhấn nút để nhận lời chúc từ ông bà, tổ tiên...
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ for Tết Bính Ngọ 2026 • Chúc cả nhà năm mới tràn đầy sức khỏe và hạnh phúc!</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Click bất kỳ đâu để thả pháo hoa 🎆</p>
+        </footer>
+    </div>
+
+    <script>
+        // ==================== CANVAS PHÁO HOA ====================
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let fireworks = [];
+        let particles = [];
+        let hue = 0;
+
+        class Firework {
+            constructor(sx, sy, tx, ty) {
+                this.x = sx;
+                this.y = sy;
+                this.sx = sx;
+                this.sy = sy;
+                this.tx = tx;
+                this.ty = ty;
+                this.distanceToTarget = Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2));
+                this.distanceTraveled = 0;
+                this.coordinates = [];
+                this.coordinateCount = 4;
+                while (this.coordinateCount--) {
+                    this.coordinates.push([this.x, this.y]);
+                }
+                this.angle = Math.atan2(ty - sy, tx - sx);
+                this.speed = 2.8;
+                this.acceleration = 1.04;
+                this.brightness = Math.random() * 50 + 55;
+                this.hue = Math.random() * 60 + 330; // Tông đỏ-vàng-cam
+            }
+
+            update(index) {
+                this.coordinates.pop();
+                this.coordinates.unshift([this.x, this.y]);
+
+                this.speed *= this.acceleration;
+                const vx = Math.cos(this.angle) * this.speed;
+                const vy = Math.sin(this.angle) * this.speed;
+                this.distanceTraveled = Math.sqrt(Math.pow(this.x + vx - this.sx, 2) + Math.pow(this.y + vy - this.sy, 2));
+
+                if (this.distanceTraveled >= this.distanceToTarget) {
+                    createExplosion(this.tx, this.ty, this.hue);
+                    fireworks.splice(index, 1);
+                } else {
+                    this.x += vx;
+                    this.y += vy;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+                ctx.lineTo(this.x, this.y);
+                ctx.strokeStyle = `hsl(${this.hue}, 100%, ${this.brightness}%)`;
+                ctx.lineWidth = 2.5;
+                ctx.stroke();
+            }
+        }
+
+        class Particle {
+            constructor(x, y, hue) {
+                this.x = x;
+                this.y = y;
+                this.coordinates = [];
+                this.coordinateCount = 6;
+                while (this.coordinateCount--) {
+                    this.coordinates.push([this.x, this.y]);
+                }
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = Math.random() * 11 + 4;
+                this.friction = 0.96;
+                this.gravity = 0.12;
+                this.hue = hue + Math.random() * 30 - 15;
+                this.brightness = Math.random() * 60 + 50;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.018 + 0.012;
+            }
+
+            update(index) {
+                this.coordinates.pop();
+                this.coordinates.unshift([this.x, this.y]);
+
+                this.speed *= this.friction;
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed + this.gravity;
+                this.alpha -= this.decay;
+
+                if (this.alpha <= this.decay) {
+                    particles.splice(index, 1);
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+                ctx.lineTo(this.x, this.y);
+                ctx.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.alpha})`;
+                ctx.lineWidth = 2.8;
+                ctx.stroke();
+            }
+        }
+
+        function createExplosion(x, y, hue) {
+            let particleCount = 110;
+            while (particleCount--) {
+                particles.push(new Particle(x, y, hue));
+            }
+        }
+
+        function launchFirework(x = null, y = null) {
+            const sx = Math.random() * width;
+            const sy = height + 20;
+            let tx, ty;
+            
+            if (x !== null && y !== null) {
+                tx = x;
+                ty = y;
+            } else {
+                tx = Math.random() * width;
+                ty = Math.random() * height * 0.45;
+            }
+            
+            fireworks.push(new Firework(sx, sy, tx, ty));
+        }
+
+        function animateFireworks() {
+            requestAnimationFrame(animateFireworks);
+            
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+            ctx.fillRect(0, 0, width, height);
+            ctx.globalCompositeOperation = 'lighter';
+
+            let i = fireworks.length;
+            while (i--) {
+                fireworks[i].draw();
+                fireworks[i].update(i);
+            }
+
+            i = particles.length;
+            while (i--) {
+                particles[i].draw();
+                particles[i].update(i);
+            }
+
+            // Tự động thả pháo hoa ngẫu nhiên
+            if (Math.random() < 0.12) {
+                launchFirework();
+            }
+        }
+
+        // Click thả pháo hoa
+        document.addEventListener('click', (e) => {
+            launchFirework(e.clientX, e.clientY);
+        });
+
+        // ==================== HOA MAI RƠI ====================
+        const petalsContainer = document.getElementById('petals');
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = ['🌼', '🌸', '🌺'][Math.floor(Math.random() * 3)];
+            
+            const left = Math.random() * 100;
+            petal.style.left = `${left}vw`;
+            
+            const size = Math.random() * 18 + 24;
+            petal.style.fontSize = `${size}px`;
+            
+            const duration = Math.random() * 9 + 11;
+            petal.style.animationDuration = `${duration}s`;
+            
+            const delay = Math.random() * 4;
+            petal.style.animationDelay = `-${delay}s`;
+            
+            petalsContainer.appendChild(petal);
+
+            // Xóa sau khi rơi xong
+            setTimeout(() => {
+                if (petal.parentNode) petal.parentNode.removeChild(petal);
+            }, (duration + delay) * 1000);
+        }
+
+        // Tạo hoa mai liên tục
+        function startFallingPetals() {
+            for (let i = 0; i < 18; i++) {
+                setTimeout(() => {
+                    createPetal();
+                }, i * 80);
+            }
+            
+            setInterval(() => {
+                createPetal();
+            }, 65);
+        }
+
+        // ==================== ĐỒNG HỒ ĐẾM NGƯỢC ====================
+        const targetDate = new Date('2026-02-17T00:00:00+07:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            let distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // ==================== LỜI CHÚC NGẪU NHIÊN ====================
+        const wishes = [
+            "Chúc mừng năm mới Bính Ngọ 2026! Chúc bạn và gia đình ngàn năm phú quý, vạn sự an khang, sức khỏe dồi dào, tiền vào như nước!",
+            "Năm mới Bính Ngọ, chúc bạn ngựa khỏe như gió, sự nghiệp thăng hoa, gia đình hạnh phúc trọn vẹn!",
+            "Chúc bạn một năm Bính Ngọ tràn đầy may mắn, tài lộc song hành, mọi điều tốt đẹp nhất sẽ đến!",
+            "Tết Bính Ngọ an lành! Chúc bạn luôn mạnh khỏe, thành công rực rỡ và hạnh phúc ngập tràn!",
+            "Chúc năm mới Bính Ngọ: Sức khỏe như núi, tiền bạc như biển, niềm vui như hoa nở khắp nơi!",
+            "Bính Ngọ phát tài! Chúc bạn và người thân luôn bình an, thịnh vượng, mọi sự như ý!",
+            "Năm mới đến rồi! Chúc bạn đón một mùa xuân rực rỡ, ngập tràn tiếng cười và lộc lá!",
+            "Chúc mừng năm mới! Mong bạn luôn vui tươi, thành đạt, và gia đình sum vầy ấm áp!"
+        ];
+
+        function getRandomWish() {
+            const wishEl = document.getElementById('wishText');
+            const randomIndex = Math.floor(Math.random() * wishes.length);
+            wishEl.textContent = wishes[randomIndex];
+            wishEl.classList.add('show');
+            
+            // Tạo thêm pháo hoa khi nhận lộc
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    launchFirework(
+                        Math.random() * width,
+                        Math.random() * height * 0.6
+                    );
+                }, i * 120);
+            }
+        }
+
+        // ==================== KHỞI CHẠY ====================
+        function init() {
+            resizeCanvas();
+            animateFireworks();
+            startFallingPetals();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Thả pháo hoa ban đầu
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    launchFirework();
+                }, i * 180);
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
