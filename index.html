@@ -310,27 +310,7 @@
             </div>
         </div>
 
-        <!-- Hình ảnh -->
-        <div class="glass">
-            <h2 style="text-align: center; margin-bottom: 25px; font-size: 2rem; color: var(--gold);">🌟 HÌNH ẢNH TẾT BÍNH NGỌ</h2>
-            <div class="images">
-                <!-- Ngựa vàng -->
-                <div class="image-card">
-                    <img src="https://picsum.photos/id/1015/800/520" alt="Ngựa vàng Bính Ngọ">
-                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Ngựa Vàng - Bính Ngọ 2026</div>
-                </div>
-                <!-- Câu đối đỏ -->
-                <div class="image-card">
-                    <img src="https://picsum.photos/id/133/800/520" alt="Câu đối Tết">
-                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Câu Đối Đỏ - Lời Chúc May Mắn</div>
-                </div>
-                <!-- Lồng đèn -->
-                <div class="image-card">
-                    <img src="https://picsum.photos/id/201/800/520" alt="Lồng đèn Tết">
-                    <div style="padding: 12px; text-align: center; background: rgba(0,0,0,0.6); color: var(--gold); font-weight: bold;">Lồng Đèn Lung Linh - Đón Xuân Sang</div>
-                </div>
-            </div>
-        </div>
+       
 
         <!-- Lời chúc -->
         <div class="glass wish-section">
@@ -338,12 +318,15 @@
             <button class="wish-btn" onclick="getRandomWish()">Nhận Lời Chúc May Mắn ✨</button>
             
             <div class="wish-text" id="wishText">
-                Nhấn nút để nhận lời chúc từ ông bà, tổ tiên...
+                Bấm nút để mở lộc đầu xuân và đón nhận lời chúc an lành cho năm mới...
+
             </div>
         </div>
 
         <footer>
-            <p>Made with ❤️ for Tết Bính Ngọ 2026 • Chúc cả nhà năm mới tràn đầy sức khỏe và hạnh phúc!</p>
+            <p>🌸 Made with ❤️ for Tết Bính Ngọ 2026 🌸</p>
+            <p>Chúc cả nhà một năm mới Bình An – Thịnh Vượng – Vạn Sự Như Ý ✨</p>
+
             <p style="margin-top: 10px; font-size: 0.9rem;">Click bất kỳ đâu để thả pháo hoa 🎆</p>
         </footer>
     </div>
@@ -583,15 +566,23 @@
 
         // ==================== LỜI CHÚC NGẪU NHIÊN ====================
         const wishes = [
-            "Chúc mừng năm mới Bính Ngọ 2026! Chúc bạn và gia đình ngàn năm phú quý, vạn sự an khang, sức khỏe dồi dào, tiền vào như nước!",
-            "Năm mới Bính Ngọ, chúc bạn ngựa khỏe như gió, sự nghiệp thăng hoa, gia đình hạnh phúc trọn vẹn!",
-            "Chúc bạn một năm Bính Ngọ tràn đầy may mắn, tài lộc song hành, mọi điều tốt đẹp nhất sẽ đến!",
-            "Tết Bính Ngọ an lành! Chúc bạn luôn mạnh khỏe, thành công rực rỡ và hạnh phúc ngập tràn!",
-            "Chúc năm mới Bính Ngọ: Sức khỏe như núi, tiền bạc như biển, niềm vui như hoa nở khắp nơi!",
-            "Bính Ngọ phát tài! Chúc bạn và người thân luôn bình an, thịnh vượng, mọi sự như ý!",
-            "Năm mới đến rồi! Chúc bạn đón một mùa xuân rực rỡ, ngập tràn tiếng cười và lộc lá!",
-            "Chúc mừng năm mới! Mong bạn luôn vui tươi, thành đạt, và gia đình sum vầy ấm áp!"
-        ];
+    "Năm mới mở ra hành trình mới – chúc bạn bình an trong tâm, vững vàng trong chí, thành công trong mọi dự định.",
+    
+    "Xuân về mang theo lộc biếc, chúc bạn sức khỏe dồi dào, tiền tài rộng mở, niềm vui đong đầy mỗi ngày.",
+    
+    "Mong bạn một năm rực rỡ như pháo hoa đêm giao thừa, ấm áp như bữa cơm sum vầy và trọn vẹn như những điều tốt đẹp nhất.",
+    
+    "Chúc gia đình luôn hòa thuận yêu thương, công việc hanh thông, mọi dự định đều thuận buồm xuôi gió.",
+    
+    "Cầu chúc bạn đi đâu cũng gặp may, làm gì cũng thuận lợi, nghĩ gì cũng thành hiện thực.",
+    
+    "Một năm mới đủ đầy: đủ sức khỏe để tận hưởng, đủ bản lĩnh để bứt phá, đủ may mắn để thành công.",
+    
+    "Mong những điều chưa kịp làm sẽ thành hiện thực, những ước mơ còn dang dở sẽ được hoàn thành.",
+    
+    "Chúc bạn giữ mãi nụ cười trên môi, ánh sáng trong tim và niềm tin vững vàng cho mọi chặng đường phía trước."
+];
+
 
         function getRandomWish() {
             const wishEl = document.getElementById('wishText');
