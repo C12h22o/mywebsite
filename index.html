@@ -330,6 +330,20 @@
             <p style="margin-top: 10px; font-size: 0.9rem;">Click bất kỳ đâu để thả pháo hoa 🎆</p>
         </footer>
     </div>
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://archive.org/download/tet-dong-day-khoa-trao-luu-nhac-hot-v.-a-playlist-nhac-cua-tui_202303/T%E1%BA%BFt%20%C4%90ong%20%C4%90%E1%BA%A7y%20-%20KHOA%20-%20Tr%C3%A0o%20L%C6%B0u%20Nh%E1%BA%A1c%20Hot%20-%20V.A%20-%20Playlist%20NhacCuaTui.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ âm thanh.
+    </audio>
+
+    <!-- Nút bật/tắt nhạc (góc phải dưới, responsive) -->
+    <button id="musicToggle" 
+            style="position: fixed; bottom: 25px; right: 25px; z-index: 100; 
+                   background: linear-gradient(45deg, var(--gold), #fff); color: var(--red); 
+                   border: 2px solid var(--red); padding: 14px 28px; border-radius: 50px; 
+                   cursor: pointer; font-weight: 700; font-size: 1.1rem; box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+                   transition: all 0.3s; display: flex; align-items: center; gap: 8px;">
+        🎵 <span id="musicLabel">Bật Nhạc Tết</span>
+    </button>
 
     <script>
         // ==================== CANVAS PHÁO HOA ====================
@@ -616,8 +630,50 @@
                 }, i * 180);
             }
         }
+        // Biến nhạc
+        let music = document.getElementById('backgroundMusic');
+        let musicToggle = document.getElementById('musicToggle');
+        let musicLabel = document.getElementById('musicLabel');
+        let isPlaying = false;
+
+        // Hàm toggle nhạc
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicLabel.textContent = 'Bật Nhạc Tết';
+                musicToggle.style.background = 'linear-gradient(45deg, var(--gold), #fff)';
+            } else {
+                music.play().catch(() => {
+                    // Nếu bị block, chờ click
+                    console.log('Nhạc sẽ phát khi bạn tương tác');
+                });
+                musicLabel.textContent = 'Tắt Nhạc Tết';
+                musicToggle.style.background = 'linear-gradient(45deg, #fff, var(--gold))';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Gán sự kiện cho nút
+        musicToggle.addEventListener('click', toggleMusic);
+
+        // Tự động thử phát nhạc sau 2s (nếu user đã click trang)
+        setTimeout(() => {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicLabel.textContent = 'Tắt Nhạc Tết';
+                    musicToggle.style.background = 'linear-gradient(45deg, #fff, var(--gold))';
+                }).catch(() => {});
+            }
+        }, 2000);
+
+        // ==================== KHỞI CHẠY (GỌI LẠI INIT) ====================
+        
+    
 
         window.onload = init;
+    
+    
     </script>
 </body>
 </html>
